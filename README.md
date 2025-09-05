@@ -143,6 +143,11 @@ npm run build
 - **Output Directory**: `dist` (automático)
 - **Install Command**: `npm install` (automático)
 
+### 📁 **Archivos que NO van al repositorio:**
+- `dist/` - Se genera automáticamente durante el build
+- `node_modules/` - Se instala con `npm install`
+- Archivos temporales y de configuración local
+
 **Archivo de configuración incluido:**
 - `vercel.json` - Configuración para SPA routing
 
@@ -237,9 +242,10 @@ Si las imágenes no se muestran, verifica que estén en la carpeta `public/` y q
 4. Verifica que las rutas en los componentes sean correctas
 
 ### Error de build en Vercel con imágenes
-- **Problema**: `Rollup failed to resolve import "/imagen.jpg?url"`
-- **Solución**: Usar rutas directas `/imagen.jpg` en lugar de imports con `?url`
+- **Problema**: `Rollup failed to resolve import "/imagen.jpg"` o `"/imagen.jpg?url"`
+- **Solución**: Usar rutas directas `/imagen.jpg` en lugar de imports de Vite
 - **Archivos afectados**: Todos los componentes que usan imágenes
+- **Nota**: Las imágenes deben estar en la carpeta `public/` para ser servidas correctamente
 
 ### Rutas incorrectas de imágenes
 - **Problema**: Imágenes con rutas `/dist/imagen.jpg` en desarrollo
