@@ -1,4 +1,7 @@
 import React, { useEffect, useRef } from 'react'
+import enteroImg from '/entero.png'
+import desgranadoImg from '/desgranado.jpg'
+import mixtoImg from '/mixto.jpg'
 
 const Productos = ({ agregarAlCarrito }) => {
   const productosRef = useRef(null)
@@ -40,21 +43,21 @@ const Productos = ({ agregarAlCarrito }) => {
       id: 1,
       nombre: 'Elote Entero',
       precio: 50,
-      imagen: '/entero.png',
+      imagen: enteroImg,
       descripcion: 'Elote completo con mayonesa, queso, chile y limón. Una delicia tradicional que no puedes dejar de probar.'
     },
     {
       id: 2,
       nombre: 'Elote Desgranado',
       precio: 55,
-      imagen: '/desgranado.jpg',
+      imagen: desgranadoImg,
       descripcion: 'Granos de elote desgranados con todos los condimentos. Perfecto para disfrutar con cuchara.'
     },
     {
       id: 3,
       nombre: 'Elote Mixto',
       precio: 45,
-      imagen: '/mixto.jpg',
+      imagen: mixtoImg,
       descripcion: 'Combinación especial de elote con ingredientes únicos. Una mezcla de sabores que te sorprenderá.'
     }
   ]
