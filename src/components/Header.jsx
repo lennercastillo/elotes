@@ -41,7 +41,6 @@ const Header = ({ menuActivo, toggleMenu, cerrarMenu }) => {
   }
 
   const configurarMenuTouch = (handler) => (e) => {
-    e.preventDefault()
     e.stopPropagation()
     handler()
   }
@@ -67,7 +66,6 @@ const Header = ({ menuActivo, toggleMenu, cerrarMenu }) => {
                 href="#inicio" 
                 className={enlaceActivo === 'inicio' ? 'active' : ''}
                 onClick={configurarNavegacion}
-                onTouchStart={configurarMenuTouch(cerrarMenu)}
               >
                 Inicio
               </a>
@@ -77,7 +75,6 @@ const Header = ({ menuActivo, toggleMenu, cerrarMenu }) => {
                 href="#objetivo" 
                 className={enlaceActivo === 'objetivo' ? 'active' : ''}
                 onClick={configurarNavegacion}
-                onTouchStart={configurarMenuTouch(cerrarMenu)}
               >
                 Objetivo
               </a>
@@ -87,7 +84,6 @@ const Header = ({ menuActivo, toggleMenu, cerrarMenu }) => {
                 href="#productos" 
                 className={enlaceActivo === 'productos' ? 'active' : ''}
                 onClick={configurarNavegacion}
-                onTouchStart={configurarMenuTouch(cerrarMenu)}
               >
                 Productos
               </a>
@@ -97,7 +93,6 @@ const Header = ({ menuActivo, toggleMenu, cerrarMenu }) => {
                 href="#contacto" 
                 className={enlaceActivo === 'contacto' ? 'active' : ''}
                 onClick={configurarNavegacion}
-                onTouchStart={configurarMenuTouch(cerrarMenu)}
               >
                 Contacto
               </a>
@@ -107,7 +102,6 @@ const Header = ({ menuActivo, toggleMenu, cerrarMenu }) => {
           <div 
             className={`hamburger ${menuActivo ? 'active' : ''}`}
             onClick={toggleMenu}
-            onTouchStart={configurarMenuTouch(toggleMenu)}
           >
             <span></span>
             <span></span>
@@ -119,7 +113,6 @@ const Header = ({ menuActivo, toggleMenu, cerrarMenu }) => {
       <div 
         className={`nav-overlay ${menuActivo ? 'active' : ''}`}
         onClick={cerrarMenu}
-        onTouchStart={configurarMenuTouch(cerrarMenu)}
       ></div>
     </>
   )
