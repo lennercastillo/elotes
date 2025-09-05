@@ -127,7 +127,7 @@ public/
 
 ### Vercel
 ```bash
-# Opción 1: Deploy automático desde GitHub
+# Opción 1: Deploy automático desde GitHub (Recomendado)
 # 1. Conecta tu repositorio a Vercel
 # 2. Vercel detectará automáticamente que es un proyecto Vite
 # 3. El build se ejecutará automáticamente
@@ -138,9 +138,13 @@ npm run build
 ```
 
 **Configuración Vercel:**
-- **Build Command**: `npm run build`
-- **Output Directory**: `dist`
-- **Install Command**: `npm install`
+- **Framework Preset**: Vite
+- **Build Command**: `npm run build` (automático)
+- **Output Directory**: `dist` (automático)
+- **Install Command**: `npm install` (automático)
+
+**Archivo de configuración incluido:**
+- `vercel.json` - Configuración para SPA routing
 
 ### Netlify
 ```bash
