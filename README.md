@@ -54,6 +54,12 @@ Una aplicación web moderna para la venta de elotes locos, desarrollada con Reac
 ```
 src/
 ├── components/
+│   ├── images/             # Imágenes de productos
+│   │   ├── entero.png
+│   │   ├── desgranado.jpg
+│   │   └── mixto.jpg
+│   ├── logo/               # Logos y iconos
+│   │   └── whatsapp-logo.jpg
 │   ├── Header.jsx          # Navegación principal
 │   ├── Hero.jsx            # Sección hero
 │   ├── Objetivo.jsx        # Sección objetivo
@@ -243,9 +249,11 @@ Si las imágenes no se muestran, verifica que estén en la carpeta `public/` y q
 
 ### Error de build en Vercel con imágenes
 - **Problema**: `Rollup failed to resolve import "/imagen.jpg"` o `"/imagen.jpg?url"`
-- **Solución**: Usar rutas directas `/imagen.jpg` en lugar de imports de Vite
+- **Solución**: Usar imports de Vite desde `src/components/images/` y `src/components/logo/`
 - **Archivos afectados**: Todos los componentes que usan imágenes
-- **Nota**: Las imágenes deben estar en la carpeta `public/` para ser servidas correctamente
+- **Estructura recomendada**: 
+  - Imágenes de productos: `src/components/images/`
+  - Logos: `src/components/logo/`
 
 ### Rutas incorrectas de imágenes
 - **Problema**: Imágenes con rutas `/dist/imagen.jpg` en desarrollo
