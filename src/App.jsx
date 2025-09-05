@@ -30,6 +30,7 @@ function App() {
       const carritoData = JSON.parse(carritoGuardado)
       setCarrito(carritoData)
       actualizarTotal(carritoData)
+      
     }
   }
 

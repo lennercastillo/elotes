@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
-import enteroImg from '/entero.png'
-import desgranadoImg from '/desgranado.jpg'
-import mixtoImg from '/mixto.jpg'
+import enteroImg from '/entero.png?url'
+import desgranadoImg from '/desgranado.jpg?url'
+import mixtoImg from '/mixto.jpg?url'
 
 const Productos = ({ agregarAlCarrito }) => {
   const productosRef = useRef(null)
