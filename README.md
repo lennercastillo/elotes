@@ -237,6 +237,11 @@ Si las imágenes no se muestran, verifica que estén en la carpeta `public/` y q
 3. Revisa la consola del navegador para errores
 4. Verifica que las rutas en los componentes sean correctas
 
+### Error de build en Vercel con imágenes
+- **Problema**: `Rollup failed to resolve import "/imagen.jpg?url"`
+- **Solución**: Usar rutas directas `/imagen.jpg` en lugar de imports con `?url`
+- **Archivos afectados**: Todos los componentes que usan imágenes
+
 ### Imágenes se ven distorsionadas
 - Las imágenes se redimensionan automáticamente con `object-fit: cover`
 - Ajusta los estilos CSS si necesitas un comportamiento diferente

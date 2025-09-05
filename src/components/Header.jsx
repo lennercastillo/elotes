@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import whatsappLogo from '/whatsapp-logo.jpg?url'
 
 const Header = ({ menuActivo, toggleMenu, cerrarMenu }) => {
   const [enlaceActivo, setEnlaceActivo] = useState('')
@@ -53,7 +52,7 @@ const Header = ({ menuActivo, toggleMenu, cerrarMenu }) => {
           <div className="nav-brand">
             <div className="logo-container">
               <img 
-                src={whatsappLogo} 
+                src="/whatsapp-logo.jpg" 
                 alt="Logo WhatsApp" 
                 className="logo"
               />
