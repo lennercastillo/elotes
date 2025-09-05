@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import whatsappLogo from '/Imagen de WhatsApp 2025-08-19 a las 18.31.40_d937d46c.jpg?url'
+import whatsappLogo from '/whatsapp-logo.jpg?url'
 
 const Header = ({ menuActivo, toggleMenu, cerrarMenu }) => {
   const [enlaceActivo, setEnlaceActivo] = useState('')

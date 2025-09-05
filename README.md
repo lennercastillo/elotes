@@ -127,9 +127,20 @@ public/
 
 ### Vercel
 ```bash
+# Opción 1: Deploy automático desde GitHub
+# 1. Conecta tu repositorio a Vercel
+# 2. Vercel detectará automáticamente que es un proyecto Vite
+# 3. El build se ejecutará automáticamente
+
+# Opción 2: Deploy manual
 npm run build
 # Subir carpeta 'dist' a Vercel
 ```
+
+**Configuración Vercel:**
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist`
+- **Install Command**: `npm install`
 
 ### Netlify
 ```bash
