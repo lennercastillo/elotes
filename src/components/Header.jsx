@@ -110,10 +110,6 @@ const Header = ({ menuActivo, toggleMenu, cerrarMenu }) => {
         </nav>
       </header>
       
-      <div 
-        className={`nav-overlay ${menuActivo ? 'active' : ''}`}
-        onClick={cerrarMenu}
-      ></div>
     </>
   )
 }
