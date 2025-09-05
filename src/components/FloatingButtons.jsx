@@ -1,4 +1,5 @@
 import React from 'react'
+import whatsappLogo from '/Imagen de WhatsApp 2025-08-19 a las 18.31.40_d937d46c.jpg'
 
 const FloatingButtons = ({ abrirCarrito, abrirWhatsApp, carritoCount }) => {
   return (
@@ -14,7 +15,7 @@ const FloatingButtons = ({ abrirCarrito, abrirWhatsApp, carritoCount }) => {
       
       <div className="whatsapp-flotante" onClick={abrirWhatsApp}>
         <img 
-          src="/Imagen de WhatsApp 2025-08-19 a las 18.31.40_d937d46c.jpg" 
+          src={whatsappLogo} 
           alt="WhatsApp" 
           className="whatsapp-icon"
         />

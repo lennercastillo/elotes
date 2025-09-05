@@ -205,6 +205,27 @@ Este proyecto está bajo la Licencia MIT.
 
 Desarrollado con ❤️ usando React y Vite.
 
+## 🖼️ **Verificar Imágenes:**
+
+Una vez que el servidor esté ejecutándose en `http://localhost:3000`, puedes verificar que las imágenes se cargan correctamente visitando:
+
+- **Aplicación principal**: `http://localhost:3000`
+- **Prueba de imágenes**: `http://localhost:3000/test-images.html`
+
+Si las imágenes no se muestran, verifica que estén en la carpeta `public/` y que el servidor esté ejecutándose correctamente.
+
+## 🔧 **Solución de Problemas de Imágenes:**
+
+### Las imágenes no se cargan
+1. Verifica que las imágenes estén en la carpeta `public/`
+2. Asegúrate de que el servidor esté ejecutándose (`npm run dev`)
+3. Revisa la consola del navegador para errores
+4. Verifica que las rutas en los componentes sean correctas
+
+### Imágenes se ven distorsionadas
+- Las imágenes se redimensionan automáticamente con `object-fit: cover`
+- Ajusta los estilos CSS si necesitas un comportamiento diferente
+
 ---
 
 **Nota**: Esta es la versión React del proyecto original. Mantiene toda la funcionalidad y diseño del proyecto original, pero utiliza React para una mejor organización del código y experiencia de desarrollo.

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Imágenes</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .image-test { margin: 20px 0; padding: 10px; border: 1px solid #ccc; }
+        img { width: 100px; height: 100px; object-fit: cover; margin: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Prueba de Imágenes - Elotes Locos</h1>
+    
+    <div class="image-test">
+        <h3>Elote Entero</h3>
+        <img src="/entero.png" alt="Elote Entero" onerror="this.style.border='2px solid red'">
+        <p>Ruta: /entero.png</p>
+    </div>
+    
+    <div class="image-test">
+        <h3>Elote Desgranado</h3>
+        <img src="/desgranado.jpg" alt="Elote Desgranado" onerror="this.style.border='2px solid red'">
+        <p>Ruta: /desgranado.jpg</p>
+    </div>
+    
+    <div class="image-test">
+        <h3>Elote Mixto</h3>
+        <img src="/mixto.jpg" alt="Elote Mixto" onerror="this.style.border='2px solid red'">
+        <p>Ruta: /mixto.jpg</p>
+    </div>
+    
+    <div class="image-test">
+        <h3>WhatsApp Logo</h3>
+        <img src="/Imagen de WhatsApp 2025-08-19 a las 18.31.40_d937d46c.jpg" alt="WhatsApp Logo" onerror="this.style.border='2px solid red'">
+        <p>Ruta: /Imagen de WhatsApp 2025-08-19 a las 18.31.40_d937d46c.jpg</p>
+    </div>
+    
+    <script>
+        console.log('Página de prueba de imágenes cargada');
+        console.log('Servidor ejecutándose en: http://localhost:3000');
+    </script>
+</body>
+</html>

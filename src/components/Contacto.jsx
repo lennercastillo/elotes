@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import whatsappLogo from '/Imagen de WhatsApp 2025-08-19 a las 18.31.40_d937d46c.jpg'
 
 const Contacto = ({ abrirWhatsApp }) => {
   const contactoRef = useRef(null)
@@ -80,7 +81,7 @@ const Contacto = ({ abrirWhatsApp }) => {
             
             <div className="contacto-item whatsapp-contacto" onClick={abrirWhatsApp}>
               <img 
-                src="/Imagen de WhatsApp 2025-08-19 a las 18.31.40_d937d46c.jpg" 
+                src={whatsappLogo} 
                 alt="WhatsApp" 
                 className="contacto-whatsapp-icon"
               />
