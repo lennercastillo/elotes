@@ -224,8 +224,7 @@ Desarrollado con ❤️ usando React y Vite.
 
 Una vez que el servidor esté ejecutándose en `http://localhost:3000`, puedes verificar que las imágenes se cargan correctamente visitando:
 
-- **Aplicación principal**: `http://localhost:3000`
-- **Prueba de imágenes**: `http://localhost:3000/test-images.html`
+- **Aplicación principal**: `http://localhost:3000` (o el puerto que Vite asigne)
 
 Si las imágenes no se muestran, verifica que estén en la carpeta `public/` y que el servidor esté ejecutándose correctamente.
 
@@ -241,6 +240,11 @@ Si las imágenes no se muestran, verifica que estén en la carpeta `public/` y q
 - **Problema**: `Rollup failed to resolve import "/imagen.jpg?url"`
 - **Solución**: Usar rutas directas `/imagen.jpg` en lugar de imports con `?url`
 - **Archivos afectados**: Todos los componentes que usan imágenes
+
+### Rutas incorrectas de imágenes
+- **Problema**: Imágenes con rutas `/dist/imagen.jpg` en desarrollo
+- **Solución**: Usar rutas directas `/imagen.jpg` que funcionan tanto en desarrollo como en producción
+- **Archivos corregidos**: `src/components/Productos.jsx`
 
 ### Imágenes se ven distorsionadas
 - Las imágenes se redimensionan automáticamente con `object-fit: cover`
