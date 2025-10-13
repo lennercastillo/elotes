@@ -44,7 +44,7 @@ const Productos = ({ agregarAlCarrito }) => {
       nombre: 'Elote Entero',
       precio: 60,
       imagen: enteroImg,
-      descripcion: 'Elote completo con mayonesa, queso, chile y limón. Una delicia tradicional que no puedes dejar de probar.'
+      descripcion: 'Elote completo con mayonesa, queso, chile y limón. Una delicia tradicional.'
     },
     {
       id: 2,
