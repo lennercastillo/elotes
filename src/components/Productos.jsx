@@ -42,21 +42,21 @@ const Productos = ({ agregarAlCarrito }) => {
     {
       id: 1,
       nombre: 'Elote Entero',
-      precio: 50,
+      precio: 60,
       imagen: enteroImg,
       descripcion: 'Elote completo con mayonesa, queso, chile y limón. Una delicia tradicional que no puedes dejar de probar.'
     },
     {
       id: 2,
       nombre: 'Elote Desgranado',
-      precio: 55,
+      precio: 70,
       imagen: desgranadoImg,
       descripcion: 'Granos de elote desgranados con todos los condimentos. Perfecto para disfrutar con cuchara.'
     },
     {
       id: 3,
       nombre: 'Elote Mixto',
-      precio: 45,
+      precio: 60,
       imagen: mixtoImg,
       descripcion: 'Combinación especial de elote con ingredientes únicos. Una mezcla de sabores que te sorprenderá.'
     }
