@@ -162,7 +162,7 @@ function App() {
     }
 
     const mensaje = generarMensajePedido()
-    const telefono = '+50584924965'
+    const telefono = '+50557653811'
     const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`
 
     mostrarNotificacion('¡Redirigiendo a WhatsApp para confirmar tu pedido! 📱', 'success')
@@ -177,7 +177,7 @@ function App() {
   }
 
   const abrirWhatsApp = () => {
-    const telefono = '+50584924965'
+    const telefono = '+50557653811'
     const mensaje = '¡Hola! Me gustaría hacer un pedido de elotes locos 🌽'
     const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`
     window.open(url, '_blank')

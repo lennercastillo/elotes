@@ -67,7 +67,7 @@ const Contacto = ({ abrirWhatsApp }) => {
               <i className="fas fa-envelope"></i>
               <div>
                 <h4>Email</h4>
-                <p>eloteslocos11mob@gmail.com</p>
+                <p>eloteslocos@gmail.com</p>
               </div>
             </div>
             
@@ -75,7 +75,7 @@ const Contacto = ({ abrirWhatsApp }) => {
               <i className="fas fa-phone"></i>
               <div>
                 <h4>Teléfono</h4>
-                <p>+505 8492 4965</p>
+                <p>+505 57653811</p>
               </div>
             </div>
             
