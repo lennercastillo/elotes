@@ -1,27 +1,27 @@
 import React from 'react'
-import whatsappLogo from './logo/whatsapp-logo.jpg'
 
 const FloatingButtons = ({ abrirCarrito, abrirWhatsApp, carritoCount }) => {
   return (
-    <>
-      <div className="carrito-flotante" onClick={abrirCarrito}>
+    <div className="floating-buttons-container">
+      <button 
+        className="btn-floating btn-cart" 
+        onClick={abrirCarrito}
+        aria-label="Abrir Carrito"
+      >
         🛒
         {carritoCount > 0 && (
-          <div className="carrito-contador">
-            {carritoCount}
-          </div>
+          <span className="cart-badge">{carritoCount}</span>
         )}
-      </div>
+      </button>
       
-      <div className="whatsapp-flotante" onClick={abrirWhatsApp}>
-        <img 
-          src={whatsappLogo} 
-          alt="WhatsApp" 
-          className="whatsapp-icon"
-        />
-        <span className="whatsapp-text">WhatsApp</span>
-      </div>
-    </>
+      <button 
+        className="btn-floating btn-whatsapp" 
+        onClick={abrirWhatsApp}
+        aria-label="Contactar por WhatsApp"
+      >
+        💬
+      </button>
+    </div>
   )
 }
 

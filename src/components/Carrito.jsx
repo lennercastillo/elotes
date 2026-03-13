@@ -1,64 +1,36 @@
 import React from 'react'
 
 const Carrito = ({ 
-  show, 
-  carrito, 
-  total, 
-  cambiarCantidad, 
-  eliminarItem, 
-  vaciarCarrito, 
-  finalizarCompra, 
-  cerrarCarrito 
+  show, carrito, total, cambiarCantidad, eliminarItem, vaciarCarrito, finalizarCompra, cerrarCarrito 
 }) => {
   if (!show) return null
 
   return (
-    <div className="carrito-overlay" style={{ display: 'flex' }} onClick={cerrarCarrito}>
+    <div className="carrito-overlay" onClick={cerrarCarrito}>
       <div className="carrito-content" onClick={(e) => e.stopPropagation()}>
         <div className="carrito-header">
           <h3>Tu Carrito</h3>
-          <button className="cerrar-carrito" onClick={cerrarCarrito}>
-            ×
-          </button>
+          <button className="cerrar-carrito" onClick={cerrarCarrito}>×</button>
         </div>
         
         <div className="carrito-items">
           {carrito.length === 0 ? (
-            <p>Tu carrito está vacío</p>
+            <p style={{ textAlign: 'center', color: 'var(--text-muted)' }}>Tu carrito está vacío</p>
           ) : (
             carrito.map((item, index) => (
               <div key={index} className="carrito-item">
-                <div>
-                  <strong>{item.nombre}</strong>
-                  <br />
-                  <small>C$ {item.precio} x {item.cantidad}</small>
+                <div style={{ flexGrow: 1 }}>
+                  <div style={{ fontWeight: '600', color: 'var(--text-main)' }}>{item.nombre}</div>
+                  <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>${item.precio} x {item.cantidad}</div>
                 </div>
-                <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <button className="btn-cantidad" onClick={() => cambiarCantidad(index, -1)}>-</button>
+                  <span style={{ fontWeight: '600', minWidth: '20px', textAlign: 'center', color: 'var(--text-main)' }}>{item.cantidad}</span>
+                  <button className="btn-cantidad" onClick={() => cambiarCantidad(index, 1)}>+</button>
                   <button 
-                    className="btn-cantidad"
-                    onClick={() => cambiarCantidad(index, -1)}
-                  >
-                    -
-                  </button>
-                  <span style={{ margin: '0 10px' }}>{item.cantidad}</span>
-                  <button 
-                    className="btn-cantidad"
-                    onClick={() => cambiarCantidad(index, 1)}
-                  >
-                    +
-                  </button>
-                  <button 
-                    className="btn-eliminar"
                     onClick={() => eliminarItem(index)}
-                    style={{
-                      marginLeft: '10px',
-                      background: '#e74c3c',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '5px',
-                      padding: '2px 8px',
-                      cursor: 'pointer'
-                    }}
+                    style={{ background: '#ef4444', color: 'white', border: 'none', borderRadius: '4px', width: '28px', height: '28px', cursor: 'pointer', marginLeft: '4px', fontWeight: 'bold' }}
+                    aria-label="Eliminar"
                   >
                     ×
                   </button>
@@ -71,7 +43,7 @@ const Carrito = ({
         {carrito.length > 0 && (
           <>
             <div className="carrito-total">
-              <strong>Total: C$ {total}</strong>
+              <strong>Total: ${total}</strong>
             </div>
             
             <div className="carrito-acciones">
@@ -79,7 +51,7 @@ const Carrito = ({
                 Vaciar Carrito
               </button>
               <button className="btn-finalizar" onClick={finalizarCompra}>
-                📱 Enviar a WhatsApp
+                Enviar Pedido
               </button>
             </div>
           </>
