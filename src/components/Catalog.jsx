@@ -22,7 +22,7 @@ const Catalog = ({ agregarAlCarrito }) => {
 
   useEffect(() => {
     fetchProductos()
-    
+
     // Realtime subscription setup
     const channel = supabase
       .channel('schema-db-changes')
@@ -56,7 +56,7 @@ const Catalog = ({ agregarAlCarrito }) => {
       <div className="container">
         <h2 className="section-title">Nuestros Productos</h2>
         {error && <div className="error-message">{error}</div>}
-        
+
         {loading ? (
           <div className="loading-message">Cargando catálogo...</div>
         ) : productos.length === 0 && !error ? (
@@ -67,21 +67,37 @@ const Catalog = ({ agregarAlCarrito }) => {
               <div key={producto.id} className="catalog-card">
                 <div className="card-image-container">
                   {producto.imagen ? (
-                     <img src={producto.imagen} alt={producto.nombre} className="card-image" />
+                    <img src={producto.imagen} alt={producto.nombre} className="card-image" />
                   ) : (
-                     <div className="placeholder-image">Sin imagen</div>
+                    <div className="placeholder-image">Sin imagen</div>
+                  )}
+                  {producto.categoria && (
+                    <span className="card-category-badge">{producto.categoria}</span>
                   )}
                 </div>
                 <div className="card-info">
                   <h3 className="card-title">{producto.nombre}</h3>
                   <p className="card-description">{producto.descripcion || 'Sin descripción detallada.'}</p>
+
+                  {producto.stock > 0 ? (
+                    <div className="stock-info" style={{ fontSize: '0.85rem', color: producto.stock <= 5 ? '#ef4444' : 'var(--text-muted)', marginBottom: '0.5rem', fontWeight: '500' }}>
+                      {producto.stock <= 5 ? `¡Solo quedan ${producto.stock} en stock!` : `Disponibles: ${producto.stock}`}
+                    </div>
+                  ) : (
+                    <div className="stock-info" style={{ fontSize: '0.85rem', color: '#ef4444', marginBottom: '0.5rem', fontWeight: 'bold' }}>
+                      Agotado
+                    </div>
+                  )}
+
                   <div className="card-footer">
                     <span className="card-price">${producto.precio}</span>
-                    <button 
+                    <button
                       className="btn-primary"
-                      onClick={() => agregarAlCarrito(producto.nombre, producto.precio)}
+                      onClick={() => agregarAlCarrito(producto)}
+                      disabled={producto.stock <= 0}
+                      style={{ opacity: producto.stock <= 0 ? 0.5 : 1, cursor: producto.stock <= 0 ? 'not-allowed' : 'pointer' }}
                     >
-                      Agregar
+                      {producto.stock <= 0 ? 'Sin Stock' : 'Agregar'}
                     </button>
                   </div>
                 </div>

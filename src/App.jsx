@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { supabase, SUPABASE_TABLE } from './lib/supabaseClient'
 import Header from './components/Header'
 import Catalog from './components/Catalog'
 import Footer from './components/Footer'
@@ -39,18 +40,32 @@ function App() {
     localStorage.setItem('catalogoCarrito', JSON.stringify(nuevoCarrito))
   }
 
-  const agregarAlCarrito = (nombre, precio) => {
-    const productoExistente = carrito.find(item => item.nombre === nombre)
+  const agregarAlCarrito = (producto) => {
+    // Para compatibilidad con items viejos que no tienen ID, usamos nombre como fallback
+    const productoExistente = carrito.find(item => item.id === producto.id || item.nombre === producto.nombre)
+    const cantidadActual = productoExistente ? productoExistente.cantidad : 0
+    
+    if (cantidadActual >= producto.stock) {
+      mostrarNotificacion(`¡Lo sentimos, solo hay ${producto.stock} unidades en stock!`, 'warning')
+      return
+    }
+
     let nuevoCarrito
 
     if (productoExistente) {
       nuevoCarrito = carrito.map(item =>
-        item.nombre === nombre
-          ? { ...item, cantidad: item.cantidad + 1 }
+        (item.id === producto.id || item.nombre === producto.nombre)
+          ? { ...item, cantidad: item.cantidad + 1, stock: producto.stock }
           : item
       )
     } else {
-      nuevoCarrito = [...carrito, { nombre, precio, cantidad: 1 }]
+      nuevoCarrito = [...carrito, { 
+        id: producto.id, 
+        nombre: producto.nombre, 
+        precio: producto.precio, 
+        cantidad: 1, 
+        stock: producto.stock 
+      }]
     }
 
     setCarrito(nuevoCarrito)
@@ -63,6 +78,12 @@ function App() {
     const nuevoCarrito = [...carrito]
     const item = nuevoCarrito[index]
     const nuevaCantidad = item.cantidad + cambio
+
+    // Validate stock on increment
+    if (cambio > 0 && item.stock !== undefined && nuevaCantidad > item.stock) {
+      mostrarNotificacion(`¡Lo sentimos, solo hay ${item.stock} unidades en stock!`, 'warning')
+      return
+    }
 
     if (nuevaCantidad <= 0) {
       eliminarItem(index)
@@ -102,12 +123,38 @@ function App() {
     setShowCarrito(false)
   }
 
-  const finalizarCompra = () => {
+  const finalizarCompra = async () => {
     if (carrito.length === 0) {
       mostrarNotificacion('Tu carrito está vacío.', 'warning')
       return
     }
     cerrarCarrito()
+    
+    // Descontar inventario de Supabase antes de enviar el WhatsApp
+    try {
+      mostrarNotificacion('Procesando pedido y actualizando inventario...', 'info')
+      for (const item of carrito) {
+        // Consultar el stock actual más reciente (por si alguien más compró mientras mirábamos)
+        const { data: productoActual, error: errorSelect } = await supabase
+          .from(SUPABASE_TABLE)
+          .select('stock')
+          .eq('id', item.id)
+          .single()
+
+        if (!errorSelect && productoActual) {
+          const nuevoStock = productoActual.stock - item.cantidad
+          
+          await supabase
+            .from(SUPABASE_TABLE)
+            .update({ stock: nuevoStock < 0 ? 0 : nuevoStock })
+            .eq('id', item.id)
+        }
+      }
+    } catch (error) {
+      console.error('Error al actualizar el stock en Supabase:', error)
+      // Aunque falle la actualización por red, permitimos que se envíe el WhatsApp.
+    }
+
     enviarPedidoWhatsApp()
   }
 

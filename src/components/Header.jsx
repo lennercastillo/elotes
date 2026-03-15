@@ -5,11 +5,11 @@ const Header = ({ menuActivo, toggleMenu, cerrarMenu }) => {
     <header className="header">
       <div className="container header-content">
         <div className="logo-container">
-          <span className="logo-text">Catálogo Virtual</span>
+          <span className="logo-text">Catálogo</span>
         </div>
 
-        <button 
-          className={`menu-toggle ${menuActivo ? 'active' : ''}`} 
+        <button
+          className={`menu-toggle ${menuActivo ? 'active' : ''}`}
           onClick={toggleMenu}
           aria-label="Menú"
         >
