@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { supabase, SUPABASE_TABLE } from './lib/supabaseClient'
-import Header from './components/Header'
-import Catalog from './components/Catalog'
-import Footer from './components/Footer'
-import Carrito from './components/Carrito'
+import HomePage from './pages/Home'
+import ProductsPage from './pages/Products'
 import FloatingButtons from './components/FloatingButtons'
 import PWABanner from './components/PWABanner'
 import Notification from './components/Notification'
+import Carrito from './components/Carrito'
+import Footer from './components/Footer'
 
 function App() {
   const [carrito, setCarrito] = useState([])
@@ -19,7 +20,7 @@ function App() {
     cargarCarrito()
     configurarPWA()
     registrarServiceWorker()
-    mostrarNotificacion('¡Bienvenido al Catálogo!', 'success')
+    mostrarNotificacion('¡Bienvenido!', 'success')
   }, [])
 
   const cargarCarrito = () => {
@@ -217,40 +218,52 @@ function App() {
   const registrarServiceWorker = () => {}
 
   return (
-    <div className="App">
-      <Header 
-        menuActivo={menuActivo}
-        toggleMenu={toggleMenu}
-        cerrarMenu={cerrarMenu}
-      />
-      <main className="main-content flex-grow">
-        <Catalog agregarAlCarrito={agregarAlCarrito} />
-      </main>
-      <Footer />
-      <FloatingButtons 
-        abrirCarrito={abrirCarrito}
-        abrirWhatsApp={abrirWhatsApp}
-        carritoCount={carrito.reduce((sum, item) => sum + item.cantidad, 0)}
-      />
-      <Carrito 
-        show={showCarrito}
-        carrito={carrito}
-        total={total}
-        cambiarCantidad={cambiarCantidad}
-        eliminarItem={eliminarItem}
-        vaciarCarrito={vaciarCarrito}
-        finalizarCompra={finalizarCompra}
-        cerrarCarrito={cerrarCarrito}
-      />
-      <PWABanner />
-      {notificacion && (
-        <Notification 
-          mensaje={notificacion.mensaje}
-          tipo={notificacion.tipo}
-          onClose={() => setNotificacion(null)}
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={
+            <HomePage 
+              menuActivo={menuActivo}
+              toggleMenu={toggleMenu}
+              cerrarMenu={cerrarMenu}
+              carritoCount={carrito.reduce((sum, item) => sum + item.cantidad, 0)}
+            />
+          } />
+          <Route path="/productos" element={
+            <ProductsPage 
+              menuActivo={menuActivo}
+              toggleMenu={toggleMenu}
+              cerrarMenu={cerrarMenu}
+              carritoCount={carrito.reduce((sum, item) => sum + item.cantidad, 0)}
+              agregarAlCarrito={agregarAlCarrito}
+            />
+          } />
+        </Routes>
+
+        <FloatingButtons 
+          abrirCarrito={abrirCarrito}
+          abrirWhatsApp={abrirWhatsApp}
+          carritoCount={carrito.reduce((sum, item) => sum + item.cantidad, 0)}
         />
-      )}
-    </div>
+        <Carrito 
+          show={showCarrito}
+          carrito={carrito}
+          total={total}
+          cambiarCantidad={cambiarCantidad}
+          eliminarItem={eliminarItem}
+          vaciarCarrito={vaciarCarrito}
+          finalizarCompra={finalizarCompra}
+          cerrarCarrito={cerrarCarrito}
+        />
+        {notificacion && (
+          <Notification 
+            mensaje={notificacion.mensaje}
+            tipo={notificacion.tipo}
+            onClose={() => setNotificacion(null)}
+          />
+        )}
+      </div>
+    </BrowserRouter>
   )
 }
 

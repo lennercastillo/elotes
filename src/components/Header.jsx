@@ -1,15 +1,22 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { Store, ShoppingCart } from 'lucide-react'
 
-const Header = ({ menuActivo, toggleMenu, cerrarMenu }) => {
+const Header = ({ menuActivo, toggleMenu, cerrarMenu, carritoCount }) => {
   return (
-    <header className="header">
-      <div className="container header-content">
+    <header className="header-light">
+      <div className="container header-content-light">
         <div className="logo-container">
-          <span className="logo-text">Catálogo</span>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
+            <span className="logo-icon-m">
+              <Store size={20} />
+            </span>
+            <span className="logo-text-black">Punto de Venta</span>
+          </Link>
         </div>
 
         <button
-          className={`menu-toggle ${menuActivo ? 'active' : ''}`}
+          className={`menu-toggle-dark ${menuActivo ? 'active' : ''}`}
           onClick={toggleMenu}
           aria-label="Menú"
         >
@@ -18,11 +25,21 @@ const Header = ({ menuActivo, toggleMenu, cerrarMenu }) => {
           <span></span>
         </button>
 
-        <nav className={`nav-menu ${menuActivo ? 'active' : ''}`}>
-          <ul className="nav-list">
-            <li><a href="#catalogo" onClick={cerrarMenu}>Productos</a></li>
+        <nav className={`nav-menu-light ${menuActivo ? 'active' : ''}`}>
+          <ul className="nav-list-light">
+            <li><Link to="/" onClick={cerrarMenu}>Inicio</Link></li>
+            <li><Link to="/productos" onClick={cerrarMenu}>Catálogo</Link></li>
+            <li><a href="#nosotros" onClick={cerrarMenu}>Sobre Nosotros</a></li>
+            <li><a href="#contacto" onClick={cerrarMenu}>Contacto</a></li>
           </ul>
         </nav>
+
+        <div className="header-actions">
+           <button className="cart-icon-btn">
+             <ShoppingCart size={24} color="#475569" />
+             {carritoCount > 0 && <span className="cart-badge-header">{carritoCount}</span>}
+           </button>
+        </div>
       </div>
     </header>
   )
