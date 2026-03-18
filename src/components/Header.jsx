@@ -29,16 +29,16 @@ const Header = ({ menuActivo, toggleMenu, cerrarMenu, carritoCount }) => {
           <ul className="nav-list-light">
             <li><Link to="/" onClick={cerrarMenu}>Inicio</Link></li>
             <li><Link to="/productos" onClick={cerrarMenu}>Catálogo</Link></li>
-            <li><a href="#nosotros" onClick={cerrarMenu}>Sobre Nosotros</a></li>
-            <li><a href="#contacto" onClick={cerrarMenu}>Contacto</a></li>
+            <li><Link to="/nosotros" onClick={cerrarMenu}>Sobre Nosotros</Link></li>
+            <li><Link to="/contacto" onClick={cerrarMenu}>Contacto</Link></li>
           </ul>
         </nav>
 
         <div className="header-actions">
-           <button className="cart-icon-btn">
-             <ShoppingCart size={24} color="#475569" />
-             {carritoCount > 0 && <span className="cart-badge-header">{carritoCount}</span>}
-           </button>
+          <button className="cart-icon-btn">
+            <ShoppingCart size={24} color="#475569" />
+            {carritoCount > 0 && <span className="cart-badge-header">{carritoCount}</span>}
+          </button>
         </div>
       </div>
     </header>

@@ -3,6 +3,8 @@ import { HashRouter, Routes, Route } from 'react-router-dom'
 import { supabase, SUPABASE_TABLE } from './lib/supabaseClient'
 import HomePage from './pages/Home'
 import ProductsPage from './pages/Products'
+import AboutPage from './pages/About'
+import ContactPage from './pages/Contact'
 import FloatingButtons from './components/FloatingButtons'
 import PWABanner from './components/PWABanner'
 import Notification from './components/Notification'
@@ -45,7 +47,7 @@ function App() {
     // Para compatibilidad con items viejos que no tienen ID, usamos nombre como fallback
     const productoExistente = carrito.find(item => item.id === producto.id || item.nombre === producto.nombre)
     const cantidadActual = productoExistente ? productoExistente.cantidad : 0
-    
+
     if (cantidadActual >= producto.stock) {
       mostrarNotificacion(`¡Lo sentimos, solo hay ${producto.stock} unidades en stock!`, 'warning')
       return
@@ -60,12 +62,12 @@ function App() {
           : item
       )
     } else {
-      nuevoCarrito = [...carrito, { 
-        id: producto.id, 
-        nombre: producto.nombre, 
-        precio: producto.precio, 
-        cantidad: 1, 
-        stock: producto.stock 
+      nuevoCarrito = [...carrito, {
+        id: producto.id,
+        nombre: producto.nombre,
+        precio: producto.precio,
+        cantidad: 1,
+        stock: producto.stock
       }]
     }
 
@@ -130,7 +132,7 @@ function App() {
       return
     }
     cerrarCarrito()
-    
+
     // Descontar inventario de Supabase antes de enviar el WhatsApp
     try {
       mostrarNotificacion('Procesando pedido y actualizando inventario...', 'info')
@@ -144,7 +146,7 @@ function App() {
 
         if (!errorSelect && productoActual) {
           const nuevoStock = productoActual.stock - item.cantidad
-          
+
           await supabase
             .from(SUPABASE_TABLE)
             .update({ stock: nuevoStock < 0 ? 0 : nuevoStock })
@@ -185,10 +187,10 @@ function App() {
 
   const enviarPedidoWhatsApp = () => {
     if (carrito.length === 0) return
-    
+
     const mensaje = generarMensajePedido()
     // Placeholder WhatsApp number, user will configure it 
-    const telefono = import.meta.env.VITE_WHATSAPP_NUMBER || '' 
+    const telefono = import.meta.env.VITE_WHATSAPP_NUMBER || ''
     const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`
 
     mostrarNotificacion('Redirigiendo a WhatsApp...', 'success')
@@ -214,15 +216,15 @@ function App() {
   const toggleMenu = () => setMenuActivo(!menuActivo)
   const cerrarMenu = () => setMenuActivo(false)
 
-  const configurarPWA = () => {}
-  const registrarServiceWorker = () => {}
+  const configurarPWA = () => { }
+  const registrarServiceWorker = () => { }
 
   return (
     <HashRouter>
       <div className="App">
         <Routes>
           <Route path="/" element={
-            <HomePage 
+            <HomePage
               menuActivo={menuActivo}
               toggleMenu={toggleMenu}
               cerrarMenu={cerrarMenu}
@@ -230,7 +232,7 @@ function App() {
             />
           } />
           <Route path="/productos" element={
-            <ProductsPage 
+            <ProductsPage
               menuActivo={menuActivo}
               toggleMenu={toggleMenu}
               cerrarMenu={cerrarMenu}
@@ -238,14 +240,30 @@ function App() {
               agregarAlCarrito={agregarAlCarrito}
             />
           } />
+          <Route path="/nosotros" element={
+            <AboutPage 
+              menuActivo={menuActivo}
+              toggleMenu={toggleMenu}
+              cerrarMenu={cerrarMenu}
+              carritoCount={carrito.reduce((sum, item) => sum + item.cantidad, 0)}
+            />
+          } />
+          <Route path="/contacto" element={
+            <ContactPage 
+              menuActivo={menuActivo}
+              toggleMenu={toggleMenu}
+              cerrarMenu={cerrarMenu}
+              carritoCount={carrito.reduce((sum, item) => sum + item.cantidad, 0)}
+            />
+          } />
         </Routes>
 
-        <FloatingButtons 
+        <FloatingButtons
           abrirCarrito={abrirCarrito}
           abrirWhatsApp={abrirWhatsApp}
           carritoCount={carrito.reduce((sum, item) => sum + item.cantidad, 0)}
         />
-        <Carrito 
+        <Carrito
           show={showCarrito}
           carrito={carrito}
           total={total}
@@ -256,7 +274,7 @@ function App() {
           cerrarCarrito={cerrarCarrito}
         />
         {notificacion && (
-          <Notification 
+          <Notification
             mensaje={notificacion.mensaje}
             tipo={notificacion.tipo}
             onClose={() => setNotificacion(null)}
