@@ -39,7 +39,7 @@ const ContactPage = ({ menuActivo, toggleMenu, cerrarMenu, carritoCount }) => {
                 <MapPin size={24} color="#facc15" style={{ flexShrink: 0, marginTop: '0.2rem' }} />
                 <div>
                   <h3 style={{ fontSize: '1rem', fontWeight: 'bold', margin: '0 0 0.25rem' }}>Ubicación</h3>
-                  <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.95rem' }}>Blvd. Principal #123, Managua<br />Ciudad, Masatepe</p>
+                  <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.95rem' }}>Blvd. Principal #123, Managua<br />Ciudad, Managua</p>
                 </div>
               </div>
 

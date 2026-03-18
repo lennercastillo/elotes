@@ -11,7 +11,7 @@ const Header = ({ menuActivo, toggleMenu, cerrarMenu, carritoCount }) => {
             <span className="logo-icon-m">
               <Store size={20} />
             </span>
-            <span className="logo-text-black">Punto de Venta</span>
+            <span className="logo-text-black">Tienda en línea</span>
           </Link>
         </div>
 
