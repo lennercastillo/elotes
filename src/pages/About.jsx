@@ -19,20 +19,20 @@ const AboutPage = ({ menuActivo, toggleMenu, cerrarMenu, carritoCount }) => {
           
           <div style={{ background: '#fff', padding: '2.5rem', borderRadius: '12px', boxShadow: '0 4px 6px rgba(0,0,0,0.05)', textAlign: 'left' }}>
             <p style={{ color: 'var(--text-muted)', lineHeight: '1.8', marginBottom: '1.5rem', fontSize: '1.1rem' }}>
-              Bienvenidos a <strong>Elotes Locos</strong>, tu lugar favorito para disfrutar de los mejores antojitos y productos preparados con los ingredientes de más alta calidad.
+              Bienvenidos a nuestra <strong>Tienda en Línea</strong>, tu lugar de confianza para encontrar los mejores productos y ofertas desde la comodidad de tu hogar.
             </p>
             
             <h2 style={{ fontSize: '1.5rem', color: 'var(--text-main)', marginTop: '2rem', marginBottom: '1rem' }}>Nuestra Misión</h2>
             <p style={{ color: 'var(--text-muted)', lineHeight: '1.8', marginBottom: '1.5rem' }}>
-              Brindar a nuestros clientes una experiencia de sabor inolvidable en cada bocado, manteniendo la tradición de nuestras recetas mientras innovamos para sorprenderte todos los días. ¡Queremos ser los elegidos en tus momentos de antojo!
+              Brindar a nuestros clientes una experiencia de compra fácil, rápida y segura, ofreciendo productos de alta calidad y un servicio de atención excepcional. ¡Queremos facilitar tu vida brindándote exactamente lo que necesitas!
             </p>
 
             <h2 style={{ fontSize: '1.5rem', color: 'var(--text-main)', marginTop: '2rem', marginBottom: '1rem' }}>¿Por qué elegirnos?</h2>
             <ul style={{ color: 'var(--text-muted)', lineHeight: '1.8', paddingLeft: '1.2rem' }}>
-              <li style={{ marginBottom: '0.5rem' }}>🌽 Ingredientes frescos y seleccionados diariamente.</li>
-              <li style={{ marginBottom: '0.5rem' }}>✨ Higiene y preparación con los más altos estándares.</li>
-              <li style={{ marginBottom: '0.5rem' }}>🚚 Servicio rápido para que no esperes por tu antojo.</li>
-              <li style={{ marginBottom: '0.5rem' }}>❤️ Hecho con mucho amor y dedicación.</li>
+              <li style={{ marginBottom: '0.5rem' }}>🌟 Gran variedad de productos seleccionados cuidadosamente para ti.</li>
+              <li style={{ marginBottom: '0.5rem' }}>🔒 Compras y pedidos 100% seguros y transparentes.</li>
+              <li style={{ marginBottom: '0.5rem' }}>🚀 Envío rápido directo a tu ubicación o punto de entrega.</li>
+              <li style={{ marginBottom: '0.5rem' }}>💬 Atención al cliente personalizada por WhatsApp.</li>
             </ul>
           </div>
         </div>

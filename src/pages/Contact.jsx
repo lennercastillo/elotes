@@ -26,7 +26,7 @@ const ContactPage = ({ menuActivo, toggleMenu, cerrarMenu, carritoCount }) => {
         <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <h1 style={{ fontSize: '2.5rem', color: 'var(--text-main)', marginBottom: '1rem' }}>Contáctanos</h1>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>¿Tienes alguna duda o quieres cotizar un evento especial? ¡Estamos listos para atenderte!</p>
+            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>¿Tienes alguna duda sobre nuestros productos, envíos o quieres asistencia con tu pedido? ¡Estamos listos para atenderte!</p>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
