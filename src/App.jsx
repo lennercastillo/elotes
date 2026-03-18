@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { supabase, SUPABASE_TABLE } from './lib/supabaseClient'
 import HomePage from './pages/Home'
 import ProductsPage from './pages/Products'
@@ -218,7 +218,7 @@ function App() {
   const registrarServiceWorker = () => {}
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="App">
         <Routes>
           <Route path="/" element={
@@ -263,7 +263,7 @@ function App() {
           />
         )}
       </div>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
