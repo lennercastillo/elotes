@@ -413,8 +413,45 @@ body {
     grid-row: 1;
     min-height: 450px;
   }
-  .nav-list-light { display: none; }
+  .nav-menu-light {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 1.5rem 0;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    border-top: 1px solid #e2e8f0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+  .nav-menu-light.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .nav-list-light { 
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.5rem;
+    align-items: center;
+  }
   .menu-toggle-dark { display: flex; }
+  .menu-toggle-dark.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .menu-toggle-dark.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle-dark.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
 }
 
 /* Catalog Title Updates to match white bg */
